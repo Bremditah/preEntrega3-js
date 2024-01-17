@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Entrega 3 Javascript - CODERHOUSE</title>
+    
+    <link rel="stylesheet" href="./css/style.css">
+    
+</head>
+<body>
+    <header>
+        <div class="header-section container">
+            <img class="logo" src="./img/heade.jpg" alt="">
+            <div>
+                <img onclick="showCart(this)" class="carrito" src="./img/carrito.png" alt="">
+                <p class="count-product">0</p>
+            </div>
+            <div class="cart-products" id="products-id">
+                <p class="close-btn" onclick="closeBtn()">X</p>
+                <h3>Changuito</h3>
+                <div class="card-items">
+                   
+                </div>
+                <h2>Total: $<strong class="price-total">0</strong></h2>
+            </div>
+        </div>
+    </header>
+    <section class="container">
+        <div class="products">
+            <div class="carts">
+                <div>
+                    <img src="./img/dibujo1.jpeg" alt="">
+                    <p><span>50000</span>$</p>
+                </div>
+                <p class="title">Nena con gorrito de navidad</p>
+                <a href="" data-id="1" class="btn-add-cart">Agregar</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="./img/dibujo2.jpeg" alt="">
+                    <p><span>180000</span>$</p>
+                </div>
+                <p class="title"> Messi champion</p>
+                <a href="" class="btn-add-cart" data-id="2">Agregar</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="./img/dibujo3.jpeg" alt="">
+                    <p><span>45800</span>$</p>
+                </div>
+                <p class="title">Pijama de navidad</p>
+                <a href="" data-id="3" class="btn-add-cart">Agregar</a>
+            </div>
+            
+    </section>
+
+    <footer>
+        <h2>By Bremditah</h2>
+    </footer>
+
+    <script>
+        function showCart(x){
+            document.getElementById("products-id").style.display = "block";
+        }
+        function closeBtn(){
+             document.getElementById("products-id").style.display = "none";
+        }
+
+    </script>
+    <script src="./js/index.js" ></script>
+</body>
+</html>
