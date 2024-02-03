@@ -1,27 +1,29 @@
-
-
 let allContainerCart = document.querySelector('.products');
 let containerBuyCart = document.querySelector('.card-items');
-let priceTotal = document.querySelector('.price-total')
+let priceTotal = document.querySelector('.price-total');
 let amountProduct = document.querySelector('.count-product');
-
 
 let buyThings = [];
 let totalCard = 0;
 let countProduct = 0;
 
+// Cargar datos del carrito desde localStorage al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarCarritoDesdeLocalStorage();
+    loadHtml();
+});
 
 loadEventListenrs();
-function loadEventListenrs(){
-    allContainerCart.addEventListener('click', addProduct);
 
+function loadEventListenrs() {
+    allContainerCart.addEventListener('click', addProduct);
     containerBuyCart.addEventListener('click', deleteProduct);
 }
 
-function addProduct(e){
+function addProduct(e) {
     e.preventDefault();
     if (e.target.classList.contains('btn-add-cart')) {
-        const selectProduct = e.target.parentElement; 
+        const selectProduct = e.target.parentElement;
         readTheContent(selectProduct);
     }
 }
@@ -29,19 +31,11 @@ function addProduct(e){
 function deleteProduct(e) {
     if (e.target.classList.contains('delete-product')) {
         const deleteId = e.target.getAttribute('data-id');
-
-        buyThings.forEach(value => {
-            if (value.id == deleteId) {
-                let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
-                totalCard =  totalCard - priceReduce;
-                totalCard = totalCard.toFixed(2);
-            }
-        });
         buyThings = buyThings.filter(product => product.id !== deleteId);
-        
         countProduct--;
+        guardarCarritoEnLocalStorage();
     }
-  
+
     if (buyThings.length === 0) {
         priceTotal.innerHTML = 0;
         amountProduct.innerHTML = 0;
@@ -49,14 +43,14 @@ function deleteProduct(e) {
     loadHtml();
 }
 
-function readTheContent(product){
+function readTheContent(product) {
     const infoProduct = {
         image: product.querySelector('div img').src,
         title: product.querySelector('.title').textContent,
         price: product.querySelector('div p span').textContent,
         id: product.querySelector('a').getAttribute('data-id'),
         amount: 1
-    }
+    };
 
     totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
     totalCard = totalCard.toFixed(2);
@@ -68,22 +62,23 @@ function readTheContent(product){
                 product.amount++;
                 return product;
             } else {
-                return product
+                return product;
             }
         });
         buyThings = [...pro];
     } else {
-        buyThings = [...buyThings, infoProduct]
+        buyThings = [...buyThings, infoProduct];
         countProduct++;
     }
+
+    guardarCarritoEnLocalStorage();
     loadHtml();
-    
 }
 
-function loadHtml(){
+function loadHtml() {
     clearHtml();
     buyThings.forEach(product => {
-        const {image, title, price, amount, id} = product;
+        const { image, title, price, amount, id } = product;
         const row = document.createElement('div');
         row.classList.add('item');
         row.innerHTML = `
@@ -103,6 +98,21 @@ function loadHtml(){
         amountProduct.innerHTML = countProduct;
     });
 }
- function clearHtml(){
+
+function clearHtml() {
     containerBuyCart.innerHTML = '';
- }
+}
+
+function guardarCarritoEnLocalStorage() {
+    localStorage.setItem('carrito', JSON.stringify(buyThings));
+    localStorage.setItem('totalCard', totalCard);
+    localStorage.setItem('countProduct', countProduct);
+}
+
+function cargarCarritoDesdeLocalStorage() {
+    if (localStorage.getItem('carrito')) {
+        buyThings = JSON.parse(localStorage.getItem('carrito'));
+        totalCard = parseFloat(localStorage.getItem('totalCard'));
+        countProduct = parseInt(localStorage.getItem('countProduct'));
+    }
+}
