@@ -12,13 +12,13 @@
 
 <body id="regi">
 
-    <div class="container-form">
+    <div class="container-form register">
         <div class="info">
 
             <div class="info-caja">
                 <h2>Welcome</h2>
                 <p>Inicia sesión</p>
-                <input type="button" value="Inciar Sesión">
+                <input type="button" value="Inciar Sesión" id="iniciar">
             </div>
 
             <div class="form-masinfo">
@@ -44,7 +44,39 @@
                 </form>
             </div>
         </div>
-        <script src="./js/index.js" ></script>
+
+        <div class="container-form login hide">
+            <div class="info">
+    
+                <div class="info-caja">
+                    <h2>Welcome!</h2>
+                    <p>Inicia sesión</p>
+                    <input type="button" value="Registrate" id="registrarse">
+                </div>
+    
+                <div class="form-masinfo">
+                   
+                    <div class="form-infocaja">
+                        <h2>Inicia Sesion</h2>
+                        <div class="iconos"></div>
+                        <i class='bx bxl-google'></i>
+                        <i class='bx bxl-github'></i>
+                        <i class='bx bxl-linkedin'></i>
+                    </div>
+    
+                    <p>o Puedes iniciar con una cuenta</p>
+                </div>
+                    <form>
+                        <label><i class='bx bx-user'></i>
+                            <input type="text" placeholder="Nombre completo"></label>
+                        <label><i class='bx bx-envelope'></i>
+                            <input type="email" placeholder="email"></label>
+                      <input type="submit" value="inciar sesion">
+                    </form>
+                </div>
+            </div>
+
+        <script src="../js/form.js" ></script>
 </body>
 
 </html>
