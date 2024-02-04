@@ -7,7 +7,7 @@ let buyThings = [];
 let totalCard = 0;
 let countProduct = 0;
 
-// Cargar datos del carrito desde localStorage al cargar la página
+// Localstorage
 document.addEventListener('DOMContentLoaded', () => {
     cargarCarritoDesdeLocalStorage();
     loadHtml();

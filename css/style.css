@@ -270,7 +270,7 @@ header{
     font-weight: 700;
 }
 
-/*stye to btn close*/
+/*style to btn close*/
 p.close-btn{
     top: -4px;
     right: 6px;
@@ -288,4 +288,14 @@ p.author a {
     text-decoration: none;
     font-weight: 700;
     color: #000;
+}
+
+
+
+.iconos {
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    justify-self: center; 
 }
